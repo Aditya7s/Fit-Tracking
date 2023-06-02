@@ -99,6 +99,7 @@ acc_df
 
 files = glob("../../data/raw/MetaMotion/*.csv")
 
+data_path = "../../data/raw/MetaMotion\\"
 
 def read_data_from_files(files):
     acc_df = pd.DataFrame()
@@ -184,8 +185,6 @@ sampling = {
     "category": "last",
     "set": "last",
 }
-
-data_resampled
 
 data_merged[:1000].resample(rule="200ms").apply(sampling)
 
