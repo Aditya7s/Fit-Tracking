@@ -11,7 +11,9 @@ from sklearn.cluster import KMeans
 # --------------------------------------------------------------
 
 df = pd.read_pickle("../../data/interim/02_outliers_removed_chauvenets.pkl")
+df2 = pd.read_pickle("../../data/interim/test_02_outliers_removed_chauvenets.pkl")
 
+df.equals(df2)
 
 predictor_columns = list(df.columns[:6])
 

@@ -268,7 +268,6 @@ for col in outlier_columns:
 
 col = "gyr_z"
 dataset = mark_outliers_chauvenet(df, col=col)
-dataset[dataset["gyr_z_outlier"]]
 
 
 dataset.loc[dataset["gyr_z_outlier"], "gyr_z"] = np.nan
@@ -292,7 +291,7 @@ for col in outlier_columns:
         print(f"Removed {n_outliers} from {col} for {label}")
 
 
-outliers_removed_df.info()
+# outliers_removed_df.info()
 
 # --------------------------------------------------------------
 # Export new dataframe

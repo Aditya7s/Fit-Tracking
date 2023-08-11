@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from IPython.display import display
+import os
+
+os.chdir(os.path.dirname(__file__))
 
 # --------------------------------------------------------------
 # Load data

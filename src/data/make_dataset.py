@@ -1,5 +1,9 @@
 import pandas as pd
 from glob import glob
+import os
+
+os.chdir(os.path.dirname(__file__))
+
 
 # --------------------------------------------------------------
 # Read single CSV file
@@ -18,7 +22,6 @@ single_file_gyr = pd.read_csv(
 # --------------------------------------------------------------
 
 files = glob("../../data/raw/MetaMotion/*.csv")
-len(files)
 
 # --------------------------------------------------------------
 # Extract features from filename
@@ -74,8 +77,6 @@ for f in files:
 # Working with datetimes
 # --------------------------------------------------------------
 
-acc_df.info()
-
 pd.to_datetime(df["epoch (ms)"], unit="ms")
 pd.to_datetime(df["time (01:00)"])
 
@@ -91,8 +92,6 @@ del gyr_df["epoch (ms)"]
 del gyr_df["time (01:00)"]
 del gyr_df["elapsed (s)"]
 
-acc_df
-
 # --------------------------------------------------------------
 # Turn into function
 # --------------------------------------------------------------
@@ -100,6 +99,7 @@ acc_df
 files = glob("../../data/raw/MetaMotion/*.csv")
 
 data_path = "../../data/raw/MetaMotion\\"
+
 
 def read_data_from_files(files):
     acc_df = pd.DataFrame()
@@ -186,7 +186,7 @@ sampling = {
     "set": "last",
 }
 
-data_merged[:1000].resample(rule="200ms").apply(sampling)
+# data_merged[:1000].resample(rule="200ms").apply(sampling)
 
 # split by day
 days = [g for n, g in data_merged.groupby(pd.Grouper(freq="D"))]
@@ -195,7 +195,6 @@ data_resampled = pd.concat(
 )
 
 data_resampled["set"] = data_resampled["set"].astype("int")
-data_resampled.info()
 
 
 # --------------------------------------------------------------
